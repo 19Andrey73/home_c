@@ -1,0 +1,23 @@
+void change_max_min(int size, int a[]) {
+    if (size <= 1) {
+        return; // Нечего менять в массиве из 0 или 1 элемента
+    }
+    
+    int min_index = 0;
+    int max_index = 0;
+    
+    // Находим индексы минимального и максимального элементов
+    for (int i = 1; i < size; i++) {
+        if (a[i] < a[min_index]) {
+            min_index = i;
+        }
+        if (a[i] > a[max_index]) {
+            max_index = i;
+        }
+    }
+    
+    // Меняем местами минимальный и максимальный элементы
+    int temp = a[min_index];
+    a[min_index] = a[max_index];
+    a[max_index] = temp;
+}

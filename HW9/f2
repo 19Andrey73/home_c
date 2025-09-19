@@ -1,0 +1,32 @@
+void sort_even_odd(int n, int a[])
+{
+    if (n <= 1) return;
+    
+    int left = 0;
+    int right = n - 1;
+    
+    while (left < right)
+    {
+        // Находим первый нечетный элемент слева
+        while (left < right && a[left] % 2 == 0)
+        {
+            left++;
+        }
+        
+        // Находим первый четный элемент справа
+        while (left < right && a[right] % 2 != 0)
+        {
+            right--;
+        }
+        
+        // Меняем местами
+        if (left < right)
+        {
+            int temp = a[left];
+            a[left] = a[right];
+            a[right] = temp;
+            left++;
+            right--;
+        }
+    }
+}
