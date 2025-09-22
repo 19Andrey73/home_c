@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    FILE *in = fopen("input.txt", "r");
+    FILE *out = fopen("output.txt", "w");
+    char ch;
+    int lower = 0, upper = 0;
+    
+    if (in == NULL || out == NULL) {
+        printf("error\n");
+        return 1;
+    }
+    
+    // Читаем файл посимвольно
+    while ((ch = fgetc(in)) != EOF) {
+        if (isalpha(ch)) {
+            if (islower(ch)) lower++;
+            else upper++;
+        }
+    }
+    
+    fprintf(out, "%d %d", lower, upper);
+    
+    fclose(in);
+    fclose(out);
+    return 0;
+}
